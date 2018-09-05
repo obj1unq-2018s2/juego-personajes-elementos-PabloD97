@@ -1,10 +1,15 @@
+import armas.*
+import elementos.*
+
 object luisa {
 	var personajeActivo = noHayPersonaje
 }
 
 
 object floki {
-	var arma
+	var arma = null
+	
+	method asignarArma(objeto){ arma = objeto }
 	
 	method encontrar(elemento) {
 	    if (arma.estaCargada()) {
@@ -17,11 +22,14 @@ object floki {
 
 object mario {
 	var valorRecolectado = 0
+	var ultimoElementoEncontrado 
+	
+	method esFeliz(){ return  valorRecolectado >= 50 || ultimoElementoEncontrado.altura() >= 10 }
 	
 	method encontrar(elemento) {
 	    valorRecolectado += elemento.valorQueOtorga()
 	    elemento.recibirTrabajo()
-	    // ... acá hay que agregar una línea ...
+	   	ultimoElementoEncontrado = elemento
 	}
 }
 
